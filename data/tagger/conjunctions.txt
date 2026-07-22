@@ -1,0 +1,65 @@
+# Coordinating / subordinating conjunctions and conjunctive adverbs.
+# One word per line. Blank lines and lines starting with # are ignored.
+# Note: conjunctions are checked before stopwords, so a word listed here
+# always tags as a conjunction when that category is enabled.
+
+# coordinating (FANBOYS)
+and
+but
+or
+nor
+yet
+so
+for
+
+# subordinating — cause / reason
+because
+since
+as
+
+# subordinating — condition
+if
+unless
+whether
+lest
+
+# subordinating — contrast / concession
+although
+though
+whereas
+while
+albeit
+
+# subordinating — time
+when
+whenever
+before
+after
+until
+till
+once
+
+# subordinating — place / manner
+where
+wherever
+
+# subordinating — comparison
+than
+
+# conjunctive adverbs (link independent clauses)
+however
+therefore
+thus
+hence
+moreover
+furthermore
+besides
+otherwise
+nevertheless
+nonetheless
+meanwhile
+accordingly
+consequently
+instead
+likewise
+similarly
