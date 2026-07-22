@@ -1,0 +1,23 @@
+# Lua bytecode
+*.luac
+
+# Luarocks (dependency manager) — not used here, but guard anyway
+lua_modules/
+.luarocks/
+
+# luacheck linter cache
+.luacheckcache
+
+# Neovim generated help tags
+doc/tags
+
+# headless nvim test artifact
+nvim.log
+
+# local git-author-check hook config (holds your email; not committed)
+.git-author-check.json
+
+# OS / editor cruft
+.DS_Store
+*.swp
+*~
