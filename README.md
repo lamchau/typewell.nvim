@@ -2,6 +2,9 @@
 
 A distraction-free writing environment for Neovim.
 
+<img width="975" height="988" alt="image" src="https://github.com/user-attachments/assets/f189f22b-1f0f-4517-95a1-3b92bcb751a6" />
+
+
 ## Features
 
 - **Zen mode** — centers your text in a fixed-width column, hides line numbers,
