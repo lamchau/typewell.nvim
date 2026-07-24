@@ -44,23 +44,33 @@ local function load_wordlist(name)
   return set
 end
 
--- word lists loaded once at module load. call M.reload() to pick up edits
--- without restarting Neovim.
+-- word lists are loaded lazily on first classify() so requiring this module
+-- (which happens at plugin load, via syntax.lua) costs nothing. parsing the
+-- full dictionary only happens once you actually tag a buffer.
 local STOPWORDS = {}
 local VERBS = {}
 local ADJECTIVES = {}
 local CONJUNCTIONS = {}
 local EXCEPTIONS = {}
+local loaded = false
 
+-- (re)read every word list from disk. call M.reload() to pick up edits to the
+-- data files without restarting Neovim.
 function M.reload()
   STOPWORDS = load_wordlist("stopwords.txt")
   VERBS = load_wordlist("verbs.txt")
   ADJECTIVES = load_wordlist("adjectives.txt")
   CONJUNCTIONS = load_wordlist("conjunctions.txt")
   EXCEPTIONS = load_wordlist("exceptions.txt")
+  loaded = true
 end
 
-M.reload()
+-- load the dictionary the first time it's needed
+local function ensure_loaded()
+  if not loaded then
+    M.reload()
+  end
+end
 
 -- Suffix-based guesses. Order matters: first match wins.
 local SUFFIX_RULES = {
@@ -89,6 +99,7 @@ function M.classify(word, enabled)
   if #word < 2 then
     return nil
   end
+  ensure_loaded()
 
   if enabled.conjunctions and CONJUNCTIONS[word] then
     return "conjunction"
